@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Economist Style Interactive Reading - Full Vocabulary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
+
+        :root {
+            --bg-color: #fbf6ef;
+            --text-main: #333333;
+            --accent-red: #e3120b;
+            --watermark-color: rgba(200, 200, 200, 0.12);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Georgia', 'Noto Serif SC', serif;
+            line-height: 1.8;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 250px,
+                var(--watermark-color) 250px,
+                var(--watermark-color) 500px
+            );
+        }
+        .watermark::before {
+            content: "Jackson 专属授权精读";
+            position: absolute;
+            font-size: 18px;
+            opacity: 0.1;
+            transform: rotate(-30deg);
+            white-space: nowrap;
+        }
+
+        .article-content p {
+            margin-bottom: 1.8rem;
+            font-size: 1.18rem;
+            text-align: justify;
+        }
+
+        .translation {
+            font-family: 'STKaiti', 'KaiTi', serif;
+            font-size: 1.05rem;
+            color: #555;
+            margin-top: -1.2rem;
+            margin-bottom: 2.2rem;
+            display: none;
+            padding-left: 1rem;
+            border-left: 2px solid #ddd;
+        }
+
+        .bilingual-mode .translation { display: block; }
+
+        .clickable-word {
+            border-bottom: 1px dashed #bbb;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 0 1px;
+        }
+        .clickable-word:hover {
+            background-color: rgba(227, 18, 11, 0.1);
+            border-bottom: 1px solid var(--accent-red);
+        }
+
+        #popover {
+            position: absolute;
+            display: none;
+            width: 300px;
+            background: white;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            z-index: 10000;
+            padding: 18px;
+            border-top: 5px solid var(--accent-red);
+            font-family: system-ui, -apple-system, sans-serif;
+            animation: popIn 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .popover-close {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 18px;
+        }
+        .popover-close:hover { color: #666; }
+
+        .audio-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: #f3f4f6;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            color: #4b5563;
+        }
+        .audio-btn:hover { background: #e5e7eb; color: var(--accent-red); }
+
+        .btn-toggle {
+            background: var(--accent-red);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(227, 18, 11, 0.2);
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div class="watermark"></div>
+
+    <header class="max-w-3xl mx-auto py-12 px-6 border-b border-gray-200">
+        <div class="flex justify-between items-center mb-8">
+            <div class="text-3xl font-black uppercase tracking-tighter" style="color: var(--accent-red);">The Economist</div>
+            <button id="modeToggle" class="btn-toggle text-sm">切换中英对照模式</button>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Taste of Resistance</h1>
+        <p class="text-xl text-gray-500 italic">Exploring the intersection of culinary tradition and survival in troubled times.</p>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 py-12 article-content" id="articleBody">
+        
+        <!-- P1 -->
+        <div class="para-group">
+            <p>
+                A <span class="clickable-word" data-word="smashed" data-mean="粉碎的，破碎的" data-col="smashed glass" data-example="The ground was covered in smashed bottles.">smashed</span> window here, a <span class="clickable-word" data-word="provocative" data-mean="挑衅性的，煽动性的" data-col="provocative question" data-example="His provocative remarks started a fight.">provocative</span> <span class="clickable-word" data-word="sticker" data-mean="贴纸，标签" data-col="bumper sticker" data-example="He put a sticker on his laptop.">sticker</span> there. In an age when <span class="clickable-word" data-word="protest" data-mean="抗议" data-col="peaceful protest" data-example="They organized a protest against the war.">protest</span> feels increasingly meaningless, it’s no wonder that acts of <span class="clickable-word" data-word="petty" data-mean="琐碎的，微小的" data-col="petty crime" data-example="Don't worry about petty details.">petty</span> <span class="clickable-word" data-word="symbolism" data-mean="象征意义" data-col="religious symbolism" data-example="The artist uses a lot of symbolism.">symbolism</span> are on the rise.
+            </p>
+            <div class="translation">此处一扇破碎的窗，彼处一张挑衅的贴纸。在一个抗议显得日益徒劳的时代，琐碎的象征主义行为层出不穷也就不足为奇了。</div>
+        </div>
+
+        <!-- P2 -->
+        <div class="para-group">
+            <p>
+                First comes the <span class="clickable-word" data-word="hummus" data-mean="鹰嘴豆泥" data-col="creamy hummus" data-example="She dipped her bread into the hummus.">hummus</span>: <span class="clickable-word" data-word="studded" data-mean="布满的，点缀的" data-col="studded with diamonds" data-example="The night sky was studded with stars.">studded</span> with <span class="clickable-word" data-word="chickpeas" data-mean="鹰嘴豆" data-col="roasted chickpeas" data-example="Chickpeas are high in protein.">chickpeas</span>, <span class="clickable-word" data-word="anointed" data-mean="涂抹（油、水）" data-col="anointed with oil" data-example="He was anointed as the new king.">anointed</span> with a little <span class="clickable-word" data-word="reservoir" data-mean="蓄水池；汇聚处" data-col="oil reservoir" data-example="The valley acts as a natural reservoir.">reservoir</span> of <span class="clickable-word" data-word="olive" data-mean="橄榄" data-col="olive branch" data-example="I love the taste of green olives.">olive</span> oil, <span class="clickable-word" data-word="greedily" data-mean="贪婪地" data-col="eat greedily" data-example="He greedily grabbed the last slice.">greedily</span> <span class="clickable-word" data-word="smeared" data-mean="涂抹" data-col="smeared with ink" data-example="The kids' faces were smeared with chocolate.">smeared</span> <span class="clickable-word" data-word="up" data-mean="向上；彻底地" data-col="eat up" data-example="Finish it up!">up</span> with <span class="clickable-word" data-word="hunks" data-mean="大块（食物）" data-col="hunks of cheese" data-example="He cut off thick hunks of bread.">hunks</span> of <span class="clickable-word" data-word="pitta" data-mean="皮塔饼" data-col="warm pitta" data-example="Pitta bread is common in the Middle East.">pitta</span> bread and messy fingers. Then the <span class="clickable-word" data-word="tabbouleh" data-mean="塔布勒沙拉" data-col="fresh tabbouleh" data-example="Tabbouleh is made with parsley and bulgur.">tabbouleh</span>, then some <span class="clickable-word" data-word="homemade" data-mean="自制的" data-col="homemade cake" data-example="Nothing beats a homemade meal.">homemade</span> <span class="clickable-word" data-word="falafels" data-mean="油炸鹰嘴豆饼" data-col="crispy falafels" data-example="We ordered falafels for the appetizer.">falafels</span>, and then the <span class="clickable-word" data-word="lentil" data-mean="小扁豆" data-col="lentil stew" data-example="Lentil soup is very nutritious.">lentil</span> <span class="clickable-word" data-word="soup" data-mean="汤" data-col="hot soup" data-example="A bowl of hot soup is good for a cold.">soup</span>, and already the senses are <span class="clickable-word" data-word="overloaded" data-mean="超载的" data-col="information overload" data-example="The electrical circuit was overloaded.">overloaded</span>, <span class="clickable-word" data-word="plates" data-mean="盘子" data-col="clean plates" data-example="Please put the plates on the table.">plates</span> and <span class="clickable-word" data-word="bowls" data-mean="碗" data-col="mixing bowl" data-example="We need two bowls for the salad.">bowls</span> <span class="clickable-word" data-word="spilling" data-mean="溢出" data-col="spilling over" data-example="Coffee was spilling out of the cup.">spilling</span> <span class="clickable-word" data-word="off" data-mean="从...离开" data-col="fall off" data-example="The book fell off the shelf.">off</span> the edge of the table. But there shall be no <span class="clickable-word" data-word="reprieve" data-mean="喘息机会；缓刑" data-col="grant a reprieve" data-example="The rain gave us a brief reprieve.">reprieve</span>, for the mains are coming.
+            </p>
+            <div class="translation">首先是鹰嘴豆泥：布满豆粒，浇上一小汪橄榄油，人们用大块皮塔饼和沾满酱汁的手指贪婪地蘸着吃。接着是沙拉、炸豆饼和扁豆汤，感官已负荷过重，盘碗几乎要从桌边溢出。但没有喘息机会，因为主菜登场了。</div>
+        </div>
+
+        <!-- P3 -->
+        <div class="para-group">
+            <p>
+                Maqluba for the meat-eaters – traditional <span class="clickable-word" data-word="Palestinian" data-mean="巴勒斯坦的" data-col="Palestinian culture" data-example="We learned about Palestinian history.">Palestinian</span> <span class="clickable-word" data-word="upside-down" data-mean="倒置的" data-col="turn upside down" data-example="The boat was found upside down.">upside-down</span> chicken and rice, decorated with lightly <span class="clickable-word" data-word="browned" data-mean="煎成棕色的" data-col="browned butter" data-example="Fry the onions until lightly browned.">browned</span> <span class="clickable-word" data-word="cauliflower" data-mean="花椰菜" data-col="roasted cauliflower" data-example="Cauliflower is a versatile vegetable.">cauliflower</span> <span class="clickable-word" data-word="florets" data-mean="小花朵" data-col="broccoli florets" data-example="Break the head into small florets.">florets</span>, <span class="clickable-word" data-word="topped" data-mean="在顶部覆盖" data-col="topped with cream" data-example="The cake was topped with cherries.">topped</span> with <span class="clickable-word" data-word="razor-fine" data-mean="极细的" data-col="razor-fine cut" data-example="The chef made razor-fine slices of beef.">razor-fine</span> <span class="clickable-word" data-word="almonds" data-mean="杏仁" data-col="sliced almonds" data-example="Almonds are good for your heart.">almonds</span>. <span class="clickable-word" data-word="Stuffed" data-mean="填充好的" data-col="stuffed peppers" data-example="I love stuffed aubergine.">Stuffed</span> <span class="clickable-word" data-word="aubergine" data-mean="茄子" data-col="roasted aubergine" data-example="Aubergine is also known as eggplant.">aubergine</span> and <span class="clickable-word" data-word="courgette" data-mean="西葫芦" data-col="sliced courgette" data-example="Courgette grows well in summer.">courgette</span> for the <span class="clickable-word" data-word="veggies" data-mean="蔬菜；素食者" data-col="eat your veggies" data-example="We're having roasted veggies for dinner.">veggies</span>. Before you ask: yes, there will be dessert, and it’s <span class="clickable-word" data-word="baklava" data-mean="巴克拉瓦甜酥饼" data-col="honey baklava" data-example="Baklava is very sweet and nutty.">baklava</span> and homemade chocolate. Home time, and slowly you <span class="clickable-word" data-word="winch" data-mean="撑起；用绞车拉" data-col="winch up" data-example="He winched himself out of the chair.">winch</span> yourself <span class="clickable-word" data-word="upright" data-mean="直立地" data-col="stand upright" data-example="The post must be perfectly upright.">upright</span>, <span class="clickable-word" data-word="stagger" data-mean="摇晃，蹒跚" data-col="staggered home" data-example="He staggered under the heavy load.">stagger</span> <span class="clickable-word" data-word="sideways" data-mean="向侧边地" data-col="glance sideways" data-example="The car skidded sideways.">sideways</span> towards the door and <span class="clickable-word" data-word="vow" data-mean="发誓" data-col="solemn vow" data-example="He vowed never to smoke again.">vow</span> never to do something so <span class="clickable-word" data-word="gluttonous" data-mean="贪食的，暴食的" data-col="gluttonous behavior" data-example="It was a gluttonous display of excess.">gluttonous</span> and <span class="clickable-word" data-word="decadent" data-mean="颓废奢靡的" data-col="decadent dessert" data-example="Living in luxury is often called decadent.">decadent</span> ever again.
+            </p>
+            <div class="translation">肉食者享用的是传统的倒扣鸡肉饭，点缀着微黄的花椰菜，撒上极细的杏仁片。素食者则是填满馅料的茄子和西葫芦。别急着问：是的，还有甜点。回家的时间到了，你慢慢撑起身体，摇晃着走向门口，发誓再也不要做如此暴食且奢靡的事。</div>
+        </div>
+
+        <!-- P4 -->
+        <div class="para-group">
+            <p>
+                But then Faten and Mahmoud have been running their supper club at <span class="clickable-word" data-word="Cafe" data-mean="咖啡馆" data-col="local cafe" data-example="Let's meet at the cafe.">Cafe</span> <span class="clickable-word" data-word="Metro" data-mean="大都市；地铁" data-col="metro area" data-example="The metro system is very efficient.">Metro</span> for six months now, and so far repeat business has not been a problem. The space is small and <span class="clickable-word" data-word="intimate" data-mean="私密的，亲密的" data-col="intimate setting" data-example="We had an intimate dinner for two.">intimate</span>; tickets sell out weeks in advance; the <span class="clickable-word" data-word="proceeds" data-mean="收益，所得" data-col="net proceeds" data-example="Proceeds go to charity.">proceeds</span> pay for aid for the hungry and homeless of Gaza. And like so many successful ideas, it happened basically by accident: a <span class="clickable-word" data-word="one-off" data-mean="一次性的" data-col="one-off payment" data-example="It was a one-off event.">one-off</span> <span class="clickable-word" data-word="fundraiser" data-mean="筹款活动" data-col="charity fundraiser" data-example="The fundraiser was a huge success.">fundraiser</span> that quickly <span class="clickable-word" data-word="graduated" data-mean="演变成；毕业" data-col="graduated into" data-example="The protest graduated into a revolution.">graduated</span> <span class="clickable-word" data-word="into" data-mean="成为；进入" data-col="turn into" data-example="Water turns into ice.">into</span> a kind of cultural event, a fixture of the north London social scene, a source of comfort and community in <span class="clickable-word" data-word="troubling" data-mean="令人忧虑的" data-col="troubling news" data-example="The latest statistics are troubling.">troubling</span> times, <span class="clickable-word" data-word="resistance" data-mean="抵抗，反击" data-col="armed resistance" data-example="She showed little resistance to the idea.">resistance</span> in its <span class="clickable-word" data-word="tastiest" data-mean="最美味的" data-col="tastiest recipe" data-example="That was the tastiest meal I've ever had.">tastiest</span> and most delicately <span class="clickable-word" data-word="spiced" data-mean="加了香料的" data-col="spiced wine" data-example="The meat was heavily spiced.">spiced</span> form.
+            </p>
+            <div class="translation">然而，晚餐俱乐部已有半年历史，回头客从来不是问题。这里空间私密，门票早早售罄，所得收益用于援助加沙难民。这本是个偶然的一次性筹款活动，却迅速演变为北伦敦社交圈的固定盛事，在动荡时刻提供慰藉，也是一种美味的抵抗。</div>
+        </div>
+
+        <!-- P5 -->
+        <div class="para-group">
+            <p>
+                Faten moved to London in 2014. Her family once lived in the city of Beit Hanoun in Gaza, and now <span class="clickable-word" data-word="lives" data-mean="生活；居住" data-col="live in peace" data-example="She lives in a small apartment.">lives</span> <span class="clickable-word" data-word="out" data-mean="度过；在外面" data-col="live out your days" data-example="He wants to live out his life in the country.">out</span> a <span class="clickable-word" data-word="precarious" data-mean="不稳定的，危险的" data-col="precarious balance" data-example="Our financial situation is precarious.">precarious</span> and <span class="clickable-word" data-word="hunted" data-mean="焦虑的；被猎杀的" data-col="hunted expression" data-example="The fugitive had a hunted look in his eyes.">hunted</span> <span class="clickable-word" data-word="existence" data-mean="生存，生活" data-col="peaceful existence" data-example="The island depends on tourism for its existence.">existence</span> in one of Gaza’s many temporary <span class="clickable-word" data-word="refugee" data-mean="难民" data-col="refugee camp" data-example="Thousands of refugees crossed the border.">refugee</span> camps. But as she stands at her <span class="clickable-word" data-word="stove" data-mean="炉灶" data-col="electric stove" data-example="Don't leave the stove on.">stove</span> cooking the recipes her mother taught her, she feels a little closer to the land she left behind; the big, loud family meals rich with <span class="clickable-word" data-word="aroma" data-mean="香气" data-col="pleasant aroma" data-example="The aroma of fresh coffee filled the room.">aroma</span> and <span class="clickable-word" data-word="gossip" data-mean="闲聊，八卦" data-col="office gossip" data-example="I don't listen to gossip.">gossip</span>, where everyone seems to be talking at once. “We love to show people our culture,” she says. <span class="clickable-word" data-word="Amid" data-mean="在...之中" data-col="amid the chaos" data-example="The house stood amid a field of wheat.">Amid</span> the <span class="clickable-word" data-word="chaotic" data-mean="混乱的" data-col="chaotic situation" data-example="The traffic was chaotic this morning.">chaotic</span> <span class="clickable-word" data-word="bustle" data-mean="喧嚣，忙乱" data-col="hustle and bustle" data-example="I love the bustle of the market.">bustle</span> of north London, food is one of her <span class="clickable-word" data-word="links" data-mean="联结，纽带" data-col="strong links" data-example="There are clear links between the two events.">links</span> <span class="clickable-word" data-word="back" data-mean="回到过去；后面" data-col="go back" data-example="Let's look back at history.">back</span>, a marker of the Palestinian identity that Israel’s <span class="clickable-word" data-word="bombs" data-mean="炸弹" data-col="dropped bombs" data-example="The bombs caused heavy damage.">bombs</span> and <span class="clickable-word" data-word="snipers" data-mean="狙击手" data-col="enemy snipers" data-example="Snipers were positioned on the roof.">snipers</span> are so <span class="clickable-word" data-word="intent" data-mean="执意的，专注的" data-col="intent on winning" data-example="She was intent on finishing her work.">intent</span> on <span class="clickable-word" data-word="erasing" data-mean="抹去，擦除" data-col="erase memory" data-example="It's impossible to erase the past.">erasing</span>.
+            </p>
+            <div class="translation">法滕于2014年移居伦敦。她的家人现在加沙难民营中过着动荡不安的生活。但当她站在炉灶前烹饪母亲教她的食谱时，她感到与身后的土地近了一些。在北伦敦混乱的喧嚣中，食物是她的联结之一，是巴勒斯坦身份的标识——而战争正执意要将其抹去。</div>
+        </div>
+    </main>
+
+    <div id="popover">
+        <div class="popover-close" id="closePop">✕</div>
+        <div class="flex items-center mb-3">
+            <span id="popWord" class="text-2xl font-black text-red-700"></span>
+            <div class="audio-btn" id="audioBtn" title="Listen Pronunciation">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            </div>
+        </div>
+        <div class="space-y-3">
+            <div>
+                <span class="text-[10px] uppercase font-bold text-gray-400 border border-gray-200 px-1 rounded">Meaning</span>
+                <p id="popMean" class="text-base font-semibold text-gray-800 leading-tight"></p>
+            </div>
+            <div>
+                <span class="text-[10px] uppercase font-bold text-gray-400 border border-gray-200 px-1 rounded">Collocations</span>
+                <p id="popCol" class="text-sm text-red-600 font-medium italic"></p>
+            </div>
+            <div>
+                <span class="text-[10px] uppercase font-bold text-gray-400 border border-gray-200 px-1 rounded">Example</span>
+                <p id="popExample" class="text-sm text-gray-600 italic leading-snug"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modeToggle = document.getElementById('modeToggle');
+        const articleBody = document.getElementById('articleBody');
+        const popover = document.getElementById('popover');
+        const closePop = document.getElementById('closePop');
+        const audioBtn = document.getElementById('audioBtn');
+
+        modeToggle.addEventListener('click', () => {
+            articleBody.classList.toggle('bilingual-mode');
+            modeToggle.textContent = articleBody.classList.contains('bilingual-mode') ? '切换沉浸阅读模式' : '切换中英对照模式';
+        });
+
+        document.querySelectorAll('.clickable-word').forEach(wordEl => {
+            wordEl.addEventListener('click', (e) => {
+                e.stopPropagation();
+                document.getElementById('popWord').textContent = wordEl.dataset.word;
+                document.getElementById('popMean').textContent = wordEl.dataset.mean;
+                document.getElementById('popCol').textContent = wordEl.dataset.col;
+                document.getElementById('popExample').textContent = wordEl.dataset.example;
+
+                const rect = wordEl.getBoundingClientRect();
+                const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                popover.style.display = 'block';
+                const popHeight = popover.offsetHeight;
+                const popWidth = popover.offsetWidth;
+
+                let top = rect.bottom + scrollTop + 10;
+                let left = rect.left + scrollLeft - (popWidth / 2) + (rect.width / 2);
+
+                if (left < 10) left = 10;
+                if (left + popWidth > window.innerWidth) left = window.innerWidth - popWidth - 10;
+                if (rect.bottom + popHeight > window.innerHeight) {
+                    top = rect.top + scrollTop - popHeight - 10;
+                }
+
+                popover.style.top = `${top}px`;
+                popover.style.left = `${left}px`;
+            });
+        });
+
+        audioBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const word = document.getElementById('popWord').textContent;
+            const utter = new SpeechSynthesisUtterance(word);
+            utter.lang = 'en-US';
+            utter.rate = 0.9;
+            window.speechSynthesis.speak(utter);
+        });
+
+        closePop.addEventListener('click', () => popover.style.display = 'none');
+        document.addEventListener('click', (e) => {
+            if (!popover.contains(e.target)) popover.style.display = 'none';
+        });
+
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) || (e.ctrlKey && e.keyCode == 85)) return false;
+        };
+    </script>
+</body>
+</html>
